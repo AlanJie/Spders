@@ -4,7 +4,7 @@ import numpy as np
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-MASK_IMG = 'wawa.jpg'
+MASK_IMG = 'apple.jpg'
 FONT_PATH = 'font/simsun.ttc'
 FILE_PATH = 'comments.txt'
 
@@ -24,7 +24,7 @@ def create_word_cloud():
     wc.generate(cut_word())
     plt.axis('off')
     plt.imshow(wc, interpolation='bilinear')
-    plt.savefig('wawa_wc.jpg')
+    plt.savefig('apple_wc.jpg')
     plt.show()
 
 if __name__ == '__main__':
