@@ -48,12 +48,12 @@ def parse_one_page_bs(html):
     for item in items:
         yield{
             'index': soup.find_all(class_='board-index')[item].string,
-            'thumb': soup.find_all(class_ = 'board-img')[item].attrs['data-src'],
+            'thumb': soup.find_all(class_ = 'board-img')[item].attrs['data-src'][:-16],
             # 用.get('data-src')获取图片 src 链接，或者用 attrs['data-src']
             'name': soup.find_all(name = 'p',attrs = {'class' : 'name'})[item].string,
             'star': soup.find_all(name = 'p',attrs = {'class':'star'})[item].string.strip()[3:],
             'time': get_release_time(soup.find_all(class_ ='releasetime')[item].string.strip()[5:]),
-            'area': get_release_time(soup.find_all(class_ ='releasetime')[item].string.strip()[5:]),
+            'area': get_release_area(soup.find_all(class_ ='releasetime')[item].string.strip()[:]),
             'score':soup.find_all(name = 'i',attrs = {'class':'integer'})[item].string.strip() + soup.find_all(name = 'i',attrs = {'class':'fraction'})[item].string.strip()
         }
 
@@ -122,7 +122,7 @@ def main(offset):
         name = item['name']
         url = item['thumb']
         index = item['index']
-        download_thumb(name, url, index)
+        # download_thumb(name, url, index)
         write_to_file(item)
 
 if __name__ == '__main__':
