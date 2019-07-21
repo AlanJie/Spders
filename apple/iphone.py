@@ -5,7 +5,7 @@ import random
 import time
 
 
-FILE_PATH = 'D:\Sublime\workspace\Spiders\wawa\comments.txt'
+FILE_PATH = 'comments.txt'
 
 
 headers = {
